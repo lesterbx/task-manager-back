@@ -1,7 +1,7 @@
 # task-manager-back
 
-> Backend made node for the TaskManger app.<br>
-> The server endpoints are:
+Backend made node for the TaskManger app.<br>
+The server endpoints are:
 - Post request to <code>'/workspace'</code>: Creates a workspace
 - Delete request to <code>'/workspace/:workspaceID'</code>: Remove a workspace
 - Post request to <code>'/workspace/:workspaceID/user'</code>: Adds a user to the workspace
