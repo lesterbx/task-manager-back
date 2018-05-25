@@ -1,4 +1,4 @@
-# task-manager-back
+# Task Manager Backend
 
 Backend made with node for the TaskManger app.<br>
 The server endpoints are:
