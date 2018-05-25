@@ -1,0 +1,16 @@
+{
+  "_id": "_design/workspace",
+  "language": "javascript",
+  "validate_doc_update": "function (newDoc, savedDoc) {\n    if (!newDoc._deleted) {\n      function required(field, message) {\n        if (!newDoc[field] || newDoc[field] === '') {\n          throw ({ forbidden: message })\n        }\n      }\n      if (newDoc.type === 'workspace') {\n        required('title', 'Missing title')\n        required('users', 'Missing users')\n        required('picture', 'Missing picture')\n        required('admins', 'Missing admins')\n        required('description', 'Missing description')\n      } else if (newDoc.type === 'board') {\n        required('title', 'Missing tutle')\n      } else if (newDoc.type === 'column') {\n        required('title', 'Missing title')\n        required('boardID', 'Missing board id')\n        required('position', 'Missing position')\n      } else if (newDoc.type === 'note') {\n        required('text', 'Missing text')\n        required('columnID', 'Missing column id')\n        required('position', 'Missing position')\n      }\n  \n    }\n  }",
+  "updates": {
+    "timestamp": "function (doc, req) {\n      doc.timestamp = Date.now()\n      return [doc, 'Timestamped document'\n      ]\n    }"
+  },
+  "views": {
+    "boards": {
+      "map": "function (doc) {\n        if (doc.type === 'board') {\n          emit([doc.timestamp, doc.board], null);\n        }\n      }"
+    },
+    "boardContent": {
+      "map": "function (doc) {\n        if (doc.type === 'board') {\n          emit([doc._id,\n            0\n          ], null);\n        } else if (doc.type === 'column') {\n          emit([doc.boardID,\n            1\n          ], null);\n        } else if (doc.type === 'note') {\n          emit([doc.boardID,\n            2\n          ], null);\n        }\n      }"
+    }
+  }
+}
