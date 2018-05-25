@@ -1,4 +1,4 @@
-module.exports = (newDoc, savedDoc) => {
+module.exports = function(newDoc, savedDoc) {
   if(!newDoc._deleted){
     function required(field, message){
       if(newDoc[field] === undefined || newDoc[field] === ''){

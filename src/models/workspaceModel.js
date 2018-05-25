@@ -43,7 +43,7 @@ const workspaceModel = {
     if (!workspace.type || workspace.type !== 'workspace') return Promise.reject(parseError({ code: 400, reason: 'Missing or wrong type' }))
     return promisifyValidator(validateWorkspace, workspace)
       .then(() => workspaceNotExist(dbhost, workspace._id))
-      .then(() => newDB.put(workspaceDesign))
+      .then(() => newDB.put(JSON.stringify(workspaceDesign)))
       .then(() => newDB.put(workspace))
       .then(() => addWorkspaceSecurity(workspace._id))
       .then(() => addWorkspaceToUsers(workspace._id, workspace.users, ))
