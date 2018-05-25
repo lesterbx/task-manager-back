@@ -3,7 +3,7 @@
 Backend made with node for the TaskManger app.<br>
 The server endpoints are:
 - Post request to <code>'/workspace'</code>: Creates a workspace
-- Delete request to <code>'/workspace/:workspaceID'</code>: Remove a workspace
+- Delete request to <code>'/workspace/:workspaceID'</code>: Removes a workspace
 - Post request to <code>'/workspace/:workspaceID/user'</code>: Adds a user to the workspace
 - Delete request to <code>'/workspace/:workspaceID/user/:userID'</code>: Removes a user from the workspace
 - Post request to <code>'/workspace/:workspaceID/admin'</code>: Adds an admin to the workspace
