@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     "section": "httpd",
     "key": "enable_cors",

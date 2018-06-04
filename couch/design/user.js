@@ -1,7 +1,7 @@
 module.exports = {
-  "_id": "_design/user",
-  "language": "javascript",
-  "validate_doc_update": `function(newDoc, savedDoc) { if(!newDoc._deleted){      
+  _id: "_design/user",
+  language: "javascript",
+  validate_doc_update: `function(newDoc, savedDoc) { if(!newDoc._deleted){      
     function required(field, message){        
       if(newDoc[field] === undefined || newDoc[field] === ''){          
         throw({forbidden: message})        
@@ -13,7 +13,7 @@ module.exports = {
     required('workspaces', 'Missing workspaces')      
     var emailRegex = /^(([^<>()[]\\.,;:s@\"]+(.[^<>()[]\\.,;:s@\"]+)*)|(\".+\"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/      
     var nameRegex = /^[a-zA-Z]+$/      
-    
+
     function valid(field, regex, message){        
       if(!regex.test(newDoc[field])){          
         throw({forbidden: message});        
