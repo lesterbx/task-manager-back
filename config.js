@@ -1,7 +1,7 @@
 module.exports = {
-  protocol: 'http',
-  host: '127.0.0.1',
-  port: 5984,
+  protocol: 'https',
+  host: 'db.taskmanager.ml',
+  port: 443,
   user: 'user',
   password: 'pass'
 }
