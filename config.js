@@ -1,7 +1,7 @@
 module.exports = {
   protocol: 'http',
-  host: 'localhost',
+  host: '127.0.0.1',
   port: 5984,
-  user: 'lester',
-  password: 'mono12'
+  user: 'user',
+  password: 'pass'
 }
