@@ -18,4 +18,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-CMD [ "pm2-runtime", "app.js" ]
+RUN pm2-runtime app.js
