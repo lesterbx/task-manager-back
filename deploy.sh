@@ -4,4 +4,4 @@ sudo docker images purge
 sudo docker system prune -a -f
 sudo docker rmi task-manager
 sudo docker build -t task-manager .
-sudo docker run -p 80:80 -d task-manager --name task-manager
+sudo docker run -p 80:80 --name task-manager -d task-manager 
