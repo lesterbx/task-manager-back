@@ -1,5 +1,7 @@
 FROM node:carbon
 
+RUN npm install pm2 -g
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -16,4 +18,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-CMD [ "npm", "start" ]
+CMD [ "pm2-runtime", "app.js" ]
