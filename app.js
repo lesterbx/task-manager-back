@@ -47,4 +47,4 @@ app.use(fail)
 /**
  * Starts listening
  */
-app.listen(80, () => console.log('Listening on port 3000!'))
+app.listen(80, () => console.log('Listening on port 80!'))
