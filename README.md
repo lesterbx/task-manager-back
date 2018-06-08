@@ -14,4 +14,8 @@ The users must provide a header called 'auth' with the credentials in the format
 All the actions but create a workspace must be done by an admin of the workspace.
 </p>
 
+<p>
+The app is dockerized to be easier to deploy. There is included a deploy.sh script to deploy it in an environment with docker installed.
+</p>
+
 TaskManager front: <a href="https://github.com/lesterbx/task-manager">https://github.com/lesterbx/task-manager</a>
