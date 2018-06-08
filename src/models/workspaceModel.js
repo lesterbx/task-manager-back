@@ -5,6 +5,7 @@ const validateWorkspace = require('../../couch/validators/validateWorkspace')
 const config = require('../../config.js')
 const { promisifyValidator, workspaceNotExist, couchURL, parseError, checkUserExists } = require('../utils')
 const { addWorkspaceToUser, addWorkspaceToAdmin, removeWorkspaceFromUser, removeWorkspaceFromAdmin } = require('../database')
+const conflictResolver = require('../conflictResolver')
 
 const dbhost = couchURL(config)
 
@@ -48,6 +49,10 @@ const workspaceModel = {
       .then(() => addWorkspaceSecurity(workspace._id))
       .then(() => addWorkspaceToUsers(workspace._id, workspace.users, ))
       .then(() => addWorkspaceToAdmins(workspace._id, workspace.admins))
+      .then(() => {
+        conflictResolver.add(workspace)
+        return Promise.resolve()
+      })
       .catch(error => {
         if (workspace._id && !error.exist) new PouchDB(`${dbhost}/${workspace._id}`).destroy()
         if (error.name === 'illegal_database_name') {

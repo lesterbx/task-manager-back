@@ -28,10 +28,5 @@ module.exports = [
     "section": "couch_httpd_auth",
     "key": "timeout",
     "value": "86400"
-  },
-  {
-    "section": "couch_httpd_auth",
-    "key": "timeout",
-    "value": "86400"
   }
 ]

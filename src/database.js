@@ -2,6 +2,7 @@ const PouchDB = require('pouchdb')
 const config = require('../config')
 const { addToArray, removeFromArray, couchURL } = require('./utils')
 const dbhost = couchURL(config)
+
 /**
  * Updates a document from the database
  * @param {*} dbname Name of the database

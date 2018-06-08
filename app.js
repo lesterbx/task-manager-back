@@ -3,12 +3,18 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const { workspaceController, userController, adminController } = require('./src/controllers')
 const { auth, admin, begin, success, fail, } = require('./src/middlewares')
+const conflictResolver = require('./src/conflictResolver')
 const middlewares = (controller) => [begin, controller, success]
 
 /**
  * Instanciates the express app.
  */
 const app = express()
+
+/**
+ * Initialize the conflict resolver
+ */
+conflictResolver.init()
 
 /**
  * Sets up the plugins for cors support and to parse the request bodies.

@@ -1,0 +1,40 @@
+- Start docker image:
+
+sudo docker run -d --name couchdb \
+  --log-opt max-size=100m \
+  --restart always \
+  -p 5984:5984 \
+  -p 6984:6984 \
+  -p 5986:5986 \
+  -p 4369:4369 \
+  -p 9100-9200:9100-9200 \
+  -v /home/ubuntu/common:/home/couchdb/common \
+  -v /home/ubuntu/common/etc/local.ini:/home/couchdb/couchdb/etc/local.ini \
+  -e COUCHDB_DATA_DIR="/home/couchdb/common/data/db1" \
+  -e COUCHDB_USER='lester' \
+  -e COUCHDB_HASHED_PASSWORD='-pbkdf2-ca031c4368faa78ee7c8c75c53215fde25b59239,65fb12bd2eabd7c887d288eb19f323f4,10' \
+  -e COUCHDB_COOKIE='e5paz2eQ76tnsFzZVgEEKByj5yefeCby' \
+  -e COUCHDB_SECRET='b8EUV76cwLZJqHrgz9WmtM4dSLUbfhNe' \
+  -e COUCHDB_NODE_NAME='172.31.47.235' \
+  redgeoff/couchdb
+
+- Allow cors:
+
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs build-essential
+sudo npm install npm -g
+sudo npm install -g add-cors-to-couchdb
+add-cors-to-couchdb http://localhost:5984 -u admin -p admin
+
+- Create cluster:
+
+./create-cluster.sh user pass 5984 5986 "172.31.36.108 172.31.47.235"
+
+
+- Info:
+
+Cookie: e5paz2eQ76tnsFzZVgEEKByj5yefeCby
+Secret: b8EUV76cwLZJqHrgz9WmtM4dSLUbfhNe
+Password: -pbkdf2-ca031c4368faa78ee7c8c75c53215fde25b59239,65fb12bd2eabd7c887d288eb19f323f4,10
+DB-1 172.31.36.108
+DB-2 172.31.47.235
